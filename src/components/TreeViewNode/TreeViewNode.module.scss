@@ -1,0 +1,36 @@
+.root {
+
+}
+
+.itemContainer {
+  display: flex;
+  align-items: center;
+  padding: 2px 4px;
+}
+
+.itemContainerSelected {
+  background-color: #61dafb;
+}
+
+.labelContainer {
+  flex: 1;
+}
+
+.expansionIconContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 20px;
+  height: 20px;
+  //background-color: red;
+  margin-right: 8px;
+}
+.itemIconContainer {
+  width: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  margin-right: 8px;
+  //background-color: red;
+}
