@@ -4,6 +4,11 @@
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "license": "MIT",
+  "homepage": "https://github.com/askilada/react-sj-tree-view",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/askilada/react-sj-tree-view.git"
+  },
   "devDependencies": {
     "@babel/core": "^7.13.10",
     "@babel/preset-env": "^7.13.10",
