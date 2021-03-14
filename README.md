@@ -10,9 +10,55 @@ or
 
 
 ## Usage
+    // Data
+    [
+        {
+            id: '1',
+            label: 'root',
+            type: 'root',
+            children: [
+                {
+                    id: '2',
+                    label: 'Foo',
+                    type: 'foo',
+                    children: []
+                }
+            ]
+        }
+    ]
 
-    import {TreeView} from 'react-sj-tree-view'
-    // More content is on the way
+
+    // ItemTreeView
+    import React, {FC, useMemo} from 'react'
+    import {TreeView, TreeViewItem} from "react-sj-tree-view";
+    import {FaAngleDoubleUp, FaHome, FaMinus, FaPlus} from "react-icons/fa";
+    
+    interface ItemTreeViewProps {
+    items: TreeViewItem[]
+    onItemSelect: (pattern: number[]) => void
+    }
+    
+    export const ItemTreeView: FC<ItemTreeViewProps> = props => {
+    
+        const typeIcons = useMemo(() => ({
+            foo: <FaAngleDoubleUp />,
+            root: <FaHome/>
+        }), [])
+    
+        const expansionIcon = useMemo(() =>({
+            open: <FaMinus/>,
+            close: <FaPlus/>
+        }), [])
+        
+        return (
+            <TreeView items={props.items}
+                      onItemSelect={props.onItemSelect}
+                      typeIconMap={typeIcons}
+                      expansionIcons={expansionIcon}/>
+        );
+    }
+
+
 
 
 ## Development

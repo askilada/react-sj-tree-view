@@ -1,6 +1,6 @@
 {
   "name": "react-sj-tree-view",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "module": "dist/index.es.js",
   "license": "MIT",
@@ -21,7 +21,6 @@
     "classnames": "^2.2.6",
     "node-sass": "^5.0.0",
     "postcss": "^8.2.8",
-    "react": "^17.0.1",
     "rollup": "^2.41.2",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.0",

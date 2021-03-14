@@ -8,8 +8,9 @@ export interface TreeViewContextProps {
     typeIconMap: {
         [key:string]: React.ReactNode
     }
-    selectedId: string | null
-    setSelectedId: (id: string) => void
+
+    selectedIndex: number[]
+    changeSelectedIndex: (pattern: number[]) => void
 }
 // @ts-ignore
 export const TreeViewContext = createContext<TreeViewContextProps>(null)

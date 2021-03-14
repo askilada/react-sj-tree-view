@@ -10,13 +10,15 @@ export interface TreeViewNodeProps {
     label: string
     itemType: string
     children: TreeViewItem[]
+    index: number[]
+    onSelect: (pattern: number[]) => void
 }
 
 export const TreeViewNode: FC<TreeViewNodeProps> = props => {
     const treeCtx = useContext(TreeViewContext)
     const [isExpanded, setIsExpanded] = useState(false)
 
-    const isSelected = useMemo(() => treeCtx.selectedId === props.id, [props.id, treeCtx.selectedId])
+    const isSelected = useMemo(() => JSON.stringify(treeCtx.selectedIndex) === JSON.stringify(props.index), [treeCtx.selectedIndex, props.index])
 
     const expansionIcon = useMemo(() => {
         if (isExpanded) {
@@ -31,9 +33,10 @@ export const TreeViewNode: FC<TreeViewNodeProps> = props => {
     }, [treeCtx.typeIconMap, props.itemType])
 
     const handleLabelClicked = useCallback((ev: React.MouseEvent<HTMLDivElement>) => {
+        console.log('[handleLabelClicked] fired')
         ev.preventDefault()
-        treeCtx.setSelectedId(props.id)
-    }, [props.id])
+        props.onSelect(props.index)
+    }, [props])
 
     return (
         <div className={styles.root}>
@@ -50,10 +53,12 @@ export const TreeViewNode: FC<TreeViewNodeProps> = props => {
             </div>
             {isExpanded && (
                 <div style={{paddingLeft: 28}}>
-                    {props.children.map(child => (
+                    {props.children.map((child, i) => (
                         <TreeViewNode id={child.id}
                                       key={child.id}
                                       label={child.label}
+                                      index={[...props.index, i]}
+                                      onSelect={props.onSelect}
                                       itemType={child.type}>{child.children}</TreeViewNode>
                     ))}
                 </div>
